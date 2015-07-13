@@ -108,4 +108,38 @@ public class FindNearestTaxiTest {
 		assertEquals(expected, fnt.getNearestTaxis());
 	}
 
+	@Test
+	public void shouldReturnTheSameTaxis1_2_3_4() {
+		FindNearestTaxi fnt = new FindNearestTaxi(4, 1000, 1000);
+		Taxi[] taxis = { new Taxi(1100, 1100, true, "Taxi 1"), new Taxi(1150, 1150, true, "Taxi 2"),
+				new Taxi(1200, 1200, true, "Taxi 3"), new Taxi(1250, 1250, true, "Taxi 4") };
+		List<Taxi> expected = new ArrayList<Taxi>();
+
+		for (Taxi t : taxis) {
+			expected.add(t);
+			fnt.addTaxi(t);
+		}
+		taxis[3].ChangePosition(1210, 1210, true);
+		
+		assertEquals(expected, fnt.getNearestTaxis());
+	}
+
+	@Test
+	public void shouldReturnTaxis1_2_AndIgnoreTaxis3_4() {
+		FindNearestTaxi fnt = new FindNearestTaxi(4, 1000, 1000);
+		Taxi[] taxis = { new Taxi(1100, 1100, true, "Taxi 1"), new Taxi(1150, 1150, true, "Taxi 2"),
+				new Taxi(1200, 1200, true, "Taxi 3"), new Taxi(1250, 1250, true, "Taxi 4") };
+		List<Taxi> expected = new ArrayList<Taxi>();
+
+		for (int i = 0; i < taxis.length; i++) {
+			if(i < 2) {
+				expected.add(taxis[i]);
+			}
+			fnt.addTaxi(taxis[i]);
+		}
+		taxis[2].ChangePosition(5500, 7800, true);
+		taxis[3].ChangePosition(1210, 1210, false);
+
+		assertEquals(expected, fnt.getNearestTaxis());
+	}
 }

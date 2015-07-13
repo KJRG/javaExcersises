@@ -29,9 +29,10 @@ public class Taxi extends Observable {
 		return taxiId;
 	}
 
-	public void ChangePosition(int x, int y) {
+	public void ChangePosition(int x, int y, boolean isFree) {
 		position.setX(x);
 		position.setY(y);
+		this.isFree = isFree;
 
 		setChanged();
 		notifyObservers(this);
