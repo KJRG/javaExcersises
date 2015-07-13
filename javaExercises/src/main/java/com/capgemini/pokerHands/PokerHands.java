@@ -15,8 +15,8 @@ public class PokerHands {
 
 		int wins = 0; // number of wins for player 1
 
-		List<Card>	player1Cards = new ArrayList<Card>(), // hand of player 1
-					player2Cards = new ArrayList<Card>(); // hand of player 2
+		List<Card> player1Cards = new ArrayList<Card>(), // hand of player 1
+				player2Cards = new ArrayList<Card>(); // hand of player 2
 		Path fullFilepath = Paths.get(filename); // full path to file with data
 
 		// create scanner for reading file
@@ -42,15 +42,14 @@ public class PokerHands {
 					player2Cards.add(new Card(value, card.charAt(1)));
 				}
 
-
-				if(PokerHandEvaluator.findWinner(player1Cards, player2Cards) == 1) {
+				if (PokerHandEvaluator.findWinner(player1Cards, player2Cards) == 1) {
 					wins++;
 				}
 
 				// Clear the lists of cards
 				player1Cards.clear();
 				player2Cards.clear();
-				
+
 			}
 
 		} catch (FileNotFoundException ex) {

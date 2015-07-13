@@ -99,12 +99,12 @@ public class FindNearestTaxiTest {
 				new Taxi(1300, 1300, true, "Taxi 3"), new Taxi(1400, 1400, true, "Taxi 4") };
 		List<Taxi> expected = new ArrayList<Taxi>();
 
-		for(int i = 0; i < taxis.length - 1; i++) {
+		for (int i = 0; i < taxis.length - 1; i++) {
 			fnt.addTaxi(taxis[i]);
 			expected.add(taxis[i]);
 		}
 		fnt.addTaxi(taxis[taxis.length - 1]);
-		
+
 		assertEquals(expected, fnt.getNearestTaxis());
 	}
 

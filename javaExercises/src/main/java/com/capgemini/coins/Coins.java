@@ -1,6 +1,5 @@
 package com.capgemini.coins;
 
-import java.util.Arrays;
 import java.util.List;
 
 // @formatter:off
@@ -79,15 +78,4 @@ public class Coins {
 		return bestAdjacency;
 	}
 
-	public static void main(String[] args) {
-		List<Integer> list1 = Arrays.asList(1, 1, 0, 1, 0, 0); // +2 (4)
-		List<Integer> list2 = Arrays.asList(1, 1, 0, 0, 0, 1); // +1 (4)
-		List<Integer> list3 = Arrays.asList(1, 1, 1, 1, 1, 1); // -1 (4)
-		List<Integer> list4 = Arrays.asList(1); // size = 1 (0)
-
-		System.out.println(Coins.solution(list1));
-		System.out.println(Coins.solution(list2));
-		System.out.println(Coins.solution(list3));
-		System.out.println(Coins.solution(list4));
-	}
 }
