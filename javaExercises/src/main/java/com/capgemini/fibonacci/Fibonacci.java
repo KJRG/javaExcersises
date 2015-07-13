@@ -11,8 +11,6 @@ public class Fibonacci {
 	public static long fib(int n) {
 		if (n < 0) {
 			return 0;
-			// throw new IllegalArgumentException("n should be greater than or
-			// equal to 0");
 		}
 
 		long a = 0, // F(n)
