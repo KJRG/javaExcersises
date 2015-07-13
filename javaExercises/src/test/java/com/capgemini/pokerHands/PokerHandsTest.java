@@ -24,5 +24,3 @@ public class PokerHandsTest {
 	}
 
 }
-// C:\Users\kgalka\git\javaExcersises\javaExercises\src\main\java\com\capgemini\pokerHands\\poker.txt
-// C:\\Users\\kgalka\\workspace\\javaExercises\\src\\main\\java\\com\\capgemini\\pokerHands\\poker.txt
