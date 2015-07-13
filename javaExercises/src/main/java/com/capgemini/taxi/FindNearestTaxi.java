@@ -31,13 +31,14 @@ public class FindNearestTaxi implements Observer {
 		Taxi t = (Taxi) arg;
 		updateTaxiData(t);
 	}
-	
+
 	private void updateTaxiData(Taxi t) {
 		if (t.isFree() && clientPosition.Distance(t.position) <= MAX_DISTANCE) {
 			nearTaxis.add(t);
-		} else {
-			nearTaxis.remove(t);
+			return;
 		}
+
+		nearTaxis.remove(t);
 	}
 
 	public List<Taxi> getNearestTaxis() {
