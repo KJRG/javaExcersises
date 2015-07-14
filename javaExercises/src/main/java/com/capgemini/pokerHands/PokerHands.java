@@ -42,7 +42,7 @@ public class PokerHands {
 					player2Cards.add(new Card(value, card.charAt(1)));
 				}
 
-				if (PokerHandEvaluator.findWinner(player1Cards, player2Cards) == 1) {
+				if (PokerHandEvaluator.findWinner(player1Cards, player2Cards) >= 1) {
 					wins++;
 				}
 
