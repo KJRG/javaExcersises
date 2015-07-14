@@ -16,9 +16,4 @@ public class Card {
 	public char getSuit() {
 		return this.suit;
 	}
-
-	@Override
-	public String toString() {
-		return "Card [value=" + value + ", suit=" + suit + "]";
-	}
 }
