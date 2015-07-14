@@ -1,5 +1,6 @@
 package com.capgemini.pokerHands;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -68,12 +69,12 @@ public class PokerHandEvaluator {
 		boolean isFlush = true;
 		char color;
 
-		// Convert tree set to array
-		CardOccurrenceCounter[] hArray = sortedHistogram.toArray(new CardOccurrenceCounter[sortedHistogram.size()]);
-
+		// Convert tree set to list
+		List<CardOccurrenceCounter> hList = new ArrayList<CardOccurrenceCounter> (sortedHistogram);
+		
 		// Evaluate the hand
 
-		switch (hArray[0].getNumOfOccurrences()) {
+		switch (hList.get(0).getNumOfOccurrences()) {
 		case 1:
 
 			// Hand: (1, 1, 1, 1, 1)
@@ -81,7 +82,7 @@ public class PokerHandEvaluator {
 			// enough to check the result of highest_card - lowest_card - if
 			// it's 4, it's straight, otherwise it's high card
 
-			if (hArray[0].getCardValue() - hArray[4].getCardValue() == 4) {
+			if (hList.get(0).getCardValue() - hList.get(4).getCardValue() == 4) {
 
 				// straight or royal straight
 				rank = Rank.STRAIGHT.getValue();
@@ -93,7 +94,7 @@ public class PokerHandEvaluator {
 
 		case 2:
 
-			if (hArray[1].getNumOfOccurrences() == 1) {
+			if (hList.get(1).getNumOfOccurrences() == 1) {
 
 				// Hand: (2, 1, 1, 1)
 				rank = Rank.ONE_PAIR.getValue();
@@ -106,7 +107,7 @@ public class PokerHandEvaluator {
 
 		case 3:
 
-			if (hArray[1].getNumOfOccurrences() == 1) {
+			if (hList.get(1).getNumOfOccurrences() == 1) {
 
 				// Hand: (3, 1, 1)
 				rank = Rank.THREE.getValue();
@@ -144,7 +145,7 @@ public class PokerHandEvaluator {
 			if (rank == Rank.STRAIGHT.getValue()) {
 				rank = Rank.STRAIGHT_FLUSH.getValue();
 
-				if (hArray[0].getCardValue() == CardValue.ACE.getValue()) {
+				if (hList.get(0).getCardValue() == CardValue.ACE.getValue()) {
 					rank = Rank.ROYAL_FLUSH.getValue();
 				}
 			}
@@ -156,19 +157,18 @@ public class PokerHandEvaluator {
 	static int HigherCard(TreeSet<CardOccurrenceCounter> sortedHistogramP1,
 			TreeSet<CardOccurrenceCounter> sortedHistogramP2) {
 
-		// Convert tree sets to arrays
-		CardOccurrenceCounter[] hArrayP1 = sortedHistogramP1
-				.toArray(new CardOccurrenceCounter[sortedHistogramP1.size()]);
-		CardOccurrenceCounter[] hArrayP2 = sortedHistogramP2
-				.toArray(new CardOccurrenceCounter[sortedHistogramP2.size()]);
+		// Convert tree sets to lists
+		List<CardOccurrenceCounter> hListP1 = new ArrayList<CardOccurrenceCounter> (sortedHistogramP1),
+									hListP2 = new ArrayList<CardOccurrenceCounter> (sortedHistogramP2);
 
 		// Compare highest cards of players
-		for (int i = 0; i < hArrayP1.length; i++) {
-			if (hArrayP1[i].getCardValue() != hArrayP2[i].getCardValue()) {
-				return hArrayP1[i].getCardValue() > hArrayP2[i].getCardValue() ? 1 : 2;
+		for (int i = 0; i < hListP1.size(); i++) {
+			if (hListP1.get(i).getCardValue() != hListP2.get(i).getCardValue()) {
+				return hListP1.get(i).getCardValue() > hListP2.get(i).getCardValue() ? 1 : 2;
 			}
 		}
 
 		return 0;
 	}
 }
+
