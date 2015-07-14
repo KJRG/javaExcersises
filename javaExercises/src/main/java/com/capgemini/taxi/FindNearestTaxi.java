@@ -10,7 +10,7 @@ import java.util.Observer;
 
 public class FindNearestTaxi implements Observer {
 	
-	private static final int MAX_DISTANCE = 1000; // max distance between a taxi and the user
+	private static final int MAX_DISTANCE_TO_CLIENT = 1000;
 
 	private int maxNumOfTaxisToReturn;
 	private Point clientPosition;
@@ -33,7 +33,7 @@ public class FindNearestTaxi implements Observer {
 	}
 
 	private void updateTaxiData(Taxi t) {
-		if (t.isFree() && clientPosition.Distance(t.position) <= MAX_DISTANCE) {
+		if (t.isFree() && clientPosition.Distance(t.position) <= MAX_DISTANCE_TO_CLIENT) {
 			nearTaxis.add(t);
 			return;
 		}
