@@ -3,9 +3,9 @@ package com.capgemini.taxi;
 import java.util.Observable;
 
 public class Taxi extends Observable {
-	Point position;
-	private boolean isFree;
-	private String taxiId;
+	protected Point position;
+	protected boolean isFree;
+	protected String taxiId;
 
 	public Taxi(int x, int y, boolean isFree, String taxiId) {
 		position = new Point(x, y);
