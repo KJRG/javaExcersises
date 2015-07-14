@@ -12,41 +12,8 @@ public class PokerHandEvaluator {
 
 		// Hands of players
 		Hand handPlayer1 = new Hand(handP1), handPlayer2 = new Hand(handP2);
-		
+
 		return handPlayer1.compareTo(handPlayer2);
-		
-//		// ranks of players
-//		int rankP1 = 0, rankP2 = 0;
-//
-//		// create histograms for hands of both players
-//		// key is the value of card, value is the quantity of this card in the
-//		// hand of player
-//		Map<Integer, Integer> histogramP1 = createHistogram(handP1), histogramP2 = createHistogram(handP2);
-//
-//		// sort the histograms descending: first by quantity, then by the value
-//		// of card
-//		TreeSet<CardOccurrenceCounter> sortedHistogramP1 = new TreeSet<CardOccurrenceCounter>(
-//				Collections.reverseOrder()),
-//				sortedHistogramP2 = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
-//
-//		for (Integer key : histogramP1.keySet()) {
-//			sortedHistogramP1.add(new CardOccurrenceCounter(key, histogramP1.get(key)));
-//		}
-//
-//		for (Integer key : histogramP2.keySet()) {
-//			sortedHistogramP2.add(new CardOccurrenceCounter(key, histogramP2.get(key)));
-//		}
-//
-//		rankP1 = getHandRank(sortedHistogramP1, handP1);
-//		rankP2 = getHandRank(sortedHistogramP2, handP2);
-//
-//		// evaluate the histograms and return winner (1 for player 1, 2 for
-//		// player 2) or draw (0)
-//		if (rankP1 > rankP2 || (rankP1 == rankP2 && HigherCard(sortedHistogramP1, sortedHistogramP2) == 1)) {
-//			return 1;
-//		}
-//
-//		return 0;
 	}
 
 	static Map<Integer, Integer> createHistogram(List<Card> hand) {
@@ -75,8 +42,8 @@ public class PokerHandEvaluator {
 		char color;
 
 		// Convert tree set to list
-		List<CardOccurrenceCounter> hList = new ArrayList<CardOccurrenceCounter> (sortedHistogram);
-		
+		List<CardOccurrenceCounter> hList = new ArrayList<CardOccurrenceCounter>(sortedHistogram);
+
 		// Evaluate the hand
 
 		switch (hList.get(0).getNumOfOccurrences()) {
@@ -163,8 +130,8 @@ public class PokerHandEvaluator {
 			TreeSet<CardOccurrenceCounter> sortedHistogramP2) {
 
 		// Convert tree sets to lists
-		List<CardOccurrenceCounter> hListP1 = new ArrayList<CardOccurrenceCounter> (sortedHistogramP1),
-									hListP2 = new ArrayList<CardOccurrenceCounter> (sortedHistogramP2);
+		List<CardOccurrenceCounter> hListP1 = new ArrayList<CardOccurrenceCounter>(sortedHistogramP1),
+				hListP2 = new ArrayList<CardOccurrenceCounter>(sortedHistogramP2);
 
 		// Compare highest cards of players
 		for (int i = 0; i < hListP1.size(); i++) {
@@ -176,4 +143,3 @@ public class PokerHandEvaluator {
 		return 0;
 	}
 }
-

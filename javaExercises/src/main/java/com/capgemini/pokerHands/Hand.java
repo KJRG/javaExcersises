@@ -18,7 +18,7 @@ public class Hand implements Comparable<Hand> {
 		return this.cards;
 	}
 	
-	private Map<Integer, Integer> createHistogram(List<Card> hand) {
+	Map<Integer, Integer> createHistogram(List<Card> hand) {
 		Map<Integer, Integer> histogram = new HashMap<Integer, Integer>();
 		Integer cardValue = 0, quantity = 0;
 
@@ -37,7 +37,7 @@ public class Hand implements Comparable<Hand> {
 		return histogram;
 	}
 	
-	private int getHandRank(TreeSet<CardOccurrenceCounter> sortedHistogram, List<Card> hand) {
+	int getHandRank(TreeSet<CardOccurrenceCounter> sortedHistogram, List<Card> hand) {
 
 		int rank = 0;
 		boolean isFlush = true;
@@ -128,7 +128,7 @@ public class Hand implements Comparable<Hand> {
 		return rank;
 	}
 	
-	private int HigherCard(TreeSet<CardOccurrenceCounter> sortedHistogramP1,
+	int HigherCard(TreeSet<CardOccurrenceCounter> sortedHistogramP1,
 			TreeSet<CardOccurrenceCounter> sortedHistogramP2) {
 
 		// Convert tree sets to lists
