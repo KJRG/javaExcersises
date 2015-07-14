@@ -25,8 +25,10 @@ public class Coins {
 		if (coins.size() < 2) {
 			return 0;
 		}
-
-		// first, calculate the initial adjacency
+ 
+		/*
+		 * first, calculate the initial adjacency
+		 */
 		int initialAdjacency = 0;
 
 		for (int i = 0; i < coins.size() - 1; i++) {
@@ -35,12 +37,15 @@ public class Coins {
 			}
 		}
 
-		// find the maximal possible adjacency by reversing each coin
-		// and calculating the adjacency basing on the initial adjacency
+		/*
+		 * find the maximal possible adjacency by reversing each coin
+		 * and calculating the adjacency basing on the initial adjacency
+		 */
 		int currentAdjacency = initialAdjacency, bestAdjacency = 0;
 
-		// for the first and last coin, reversing can give only one pair more or
-		// less
+		/*
+		 * for the first and last coin, reversing can give only one pair more or less
+		 */
 		if (coins.get(0) != coins.get(1) || coins.get(coins.size() - 1) != coins.get(coins.size() - 2)) {
 
 			bestAdjacency = currentAdjacency + 1;
@@ -48,7 +53,9 @@ public class Coins {
 			bestAdjacency = currentAdjacency - 1;
 		}
 
-		// reversing each of other coins can give up to 2 pairs more
+		/*
+		 * reversing each of other coins can give up to 2 pairs more or less
+		 */
 		for (int i = 1; i < coins.size() - 1; i++) {
 			currentAdjacency = initialAdjacency;
 
@@ -67,12 +74,6 @@ public class Coins {
 			if (currentAdjacency > bestAdjacency) {
 				bestAdjacency = currentAdjacency;
 			}
-
-			// it is not possible to find a solution giving adjacency bigger
-			// than initial adjacency + 2
-			// if such solution is found, continuing calculations is not
-			// necessary and the function can return the best possible adjacency
-			// found
 		}
 
 		return bestAdjacency;

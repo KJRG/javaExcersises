@@ -10,14 +10,11 @@ import java.util.Scanner;
 
 public class PokerHands {
 	public int PlayerOneWins(String filename) throws IOException {
-		// This function reads poker hands from given file and returns the
-		// number of wins of player 1
-
 		int wins = 0; // number of wins for player 1
 
-		List<Card> player1Cards = new ArrayList<Card>(), // hand of player 1
-				player2Cards = new ArrayList<Card>(); // hand of player 2
-		Path fullFilepath = Paths.get(filename); // full path to file with data
+		List<Card> player1Cards = new ArrayList<Card>(),	// hand of player 1
+				player2Cards = new ArrayList<Card>();		// hand of player 2
+		Path fullFilepath = Paths.get(filename);			// full path to file with data
 
 		// create scanner for reading file
 		Scanner scanner = null;
@@ -25,7 +22,6 @@ public class PokerHands {
 			scanner = new Scanner(fullFilepath);
 
 			// for each hand in file
-			// (might also use something like while scanner.hasNextLine() here)
 			for (int i = 0; i < 1000; i++) {
 
 				// Read cards of player 1

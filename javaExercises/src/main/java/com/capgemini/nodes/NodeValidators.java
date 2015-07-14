@@ -18,6 +18,7 @@ import java.util.List;
 public class NodeValidators {
 	public void validateMethod(List<Node> nodes) throws NodeException {
 		for (Node n : nodes) {
+			
 			// validate id
 			if (n.getId().length() != 4) {
 				throw new InvalidNodeIdException("Node id has incorrect length");
@@ -51,8 +52,10 @@ public class NodeValidators {
 		int numSuccessors = 0;
 		String current = "----", successor = null;
 
-		// check if there is any node with predecessorId = "----"
-		// if not, there is a cycle in the graph
+		/*
+		 * check if there is any node with predecessorId = "----"
+		 * if not, there is a cycle in the graphs
+		 */
 		for (int i = 0; i < nodes.size(); i++) {
 			if (nodes.get(i).getPredecessorId() == current) {
 				successor = nodes.get(i).getId();

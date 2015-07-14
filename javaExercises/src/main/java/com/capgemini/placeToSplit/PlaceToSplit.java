@@ -18,22 +18,29 @@ public final class PlaceToSplit {
 	}
 
 	public static boolean canBalance(int[] nums) {
-		// if the size of array is less then 2, it is not possible to get 2
-		// parts with equal sums of elements
+		
+		/*
+		 * if the size of array is less then 2, it is not possible
+		 * to get 2 parts with equal sums of elements
+		 */
 		if (Array.getLength(nums) < 2) {
 			return false;
 		}
 
 		int left = 0, right = 0;
 
-		// first, calculate the sum of all elements - the initial value of the
-		// right part
+		/*
+		 * first, calculate the sum of all elements
+		 * - the initial value of the right part
+		 */
 		for (int i = 0; i < Array.getLength(nums); i++) {
 			right += nums[i];
 		}
 
-		// for each element of array, check if it can be the last element of
-		// left part
+		/*
+		 * for each element of array, check if it can be
+		 * the last element of left part
+		 */
 		for (int i = 0; i < Array.getLength(nums); i++) {
 			left += nums[i];
 			right -= nums[i];

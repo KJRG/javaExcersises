@@ -1,8 +1,10 @@
 package com.capgemini.pokerHands;
 
 public enum Rank {
-	// each rank has a value used to evaluate the hand of player
-	// example: one pair with highest card 3 gives 13 + value of 3 (which - in this project - is 1) = 14
+	
+	/*
+	 * each rank has a value used to evaluate the hand of player
+	 */
 	
 	HIGH_CARD(0),
 	ONE_PAIR(1),

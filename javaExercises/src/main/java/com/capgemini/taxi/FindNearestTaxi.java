@@ -9,8 +9,8 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class FindNearestTaxi implements Observer {
-	private static final int MAX_DISTANCE = 1000; // max distance between a taxi
-													// and the user
+	
+	private static final int MAX_DISTANCE = 1000; // max distance between a taxi and the user
 
 	private int maxNumOfTaxisToReturn;
 	private Point clientPosition;

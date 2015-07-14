@@ -52,10 +52,12 @@ public class Hand implements Comparable<Hand> {
 		case 1:
 
 			// Hand: (1, 1, 1, 1, 1)
-			// The histogram is sorted - to check if there is a straight, it's
-			// enough to check the result of highest_card - lowest_card - if
-			// it's 4, it's straight, otherwise it's high card
-
+			/*
+			 * The histogram is sorted - to check if there is a straight,
+			 * it's enough to check the result of highest_card - lowest_card
+			 * - if it's 4, it's straight, otherwise it's high card
+			 */
+			
 			if (hList.get(0).getCardValue() - hList.get(4).getCardValue() == 4) {
 
 				// straight or royal straight
@@ -146,14 +148,19 @@ public class Hand implements Comparable<Hand> {
 	}
 
 	public int compareTo(Hand o) {
-		// create histograms for hands of both players
-		// key is the value of card, value is the quantity of this card in the
-		// hand of player
+	
+		/*
+		 * create histograms for hands of both players
+		 * key is the value of card, value is the quantity
+		 * of this card in the hand of player
+		 */
 		Map<Integer, Integer>	histogramP1 = createHistogram(this.getCards()),
 								histogramP2 = createHistogram(o.getCards());
 		
-		// sort the histograms descending: first by quantity, then by the value
-		// of card
+		/*
+		 * sort the histograms descending:
+		 * first by quantity, then by the value of card
+		 */
 		TreeSet<CardOccurrenceCounter>	sortedHistogramP1 = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder()),
 										sortedHistogramP2 = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
 
