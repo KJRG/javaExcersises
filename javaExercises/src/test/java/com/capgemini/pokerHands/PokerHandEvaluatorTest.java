@@ -18,11 +18,11 @@ public class PokerHandEvaluatorTest {
 				new Card(CardValue.SEVEN, 'C'), new Card(CardValue.TEN, 'S'), new Card(CardValue.KING, 'H'));
 
 		Map<Integer, Integer> histogram = PokerHandEvaluator.createHistogram(hand);
-		TreeSet<ValueThenKeyComparator> sortedHistogram = new TreeSet<ValueThenKeyComparator>(
+		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(
 				Collections.reverseOrder());
 		
 		for (Integer key : histogram.keySet()) {
-			sortedHistogram.add(new ValueThenKeyComparator(key, histogram.get(key)));
+			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 
 		assertEquals(0, PokerHandEvaluator.getHandRank(sortedHistogram, hand));
@@ -34,10 +34,10 @@ public class PokerHandEvaluatorTest {
 				new Card(CardValue.THREE, 'D'), new Card(CardValue.EIGHT, 'H'), new Card(CardValue.JACK, 'S'));
 
 		Map<Integer, Integer> histogram = PokerHandEvaluator.createHistogram(hand);
-		TreeSet<ValueThenKeyComparator> sortedHistogram = new TreeSet<ValueThenKeyComparator>(
+		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(
 				Collections.reverseOrder());
 		for (Integer key : histogram.keySet()) {
-			sortedHistogram.add(new ValueThenKeyComparator(key, histogram.get(key)));
+			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 		
 		assertEquals(1, PokerHandEvaluator.getHandRank(sortedHistogram, hand));
@@ -49,11 +49,11 @@ public class PokerHandEvaluatorTest {
 				new Card(CardValue.EIGHT, 'H'), new Card(CardValue.EIGHT, 'S'), new Card(CardValue.ACE, 'S'));
 
 		Map<Integer, Integer> histogram = PokerHandEvaluator.createHistogram(hand);
-		TreeSet<ValueThenKeyComparator> sortedHistogram = new TreeSet<ValueThenKeyComparator>(
+		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(
 				Collections.reverseOrder());
 		
 		for (Integer key : histogram.keySet()) {
-			sortedHistogram.add(new ValueThenKeyComparator(key, histogram.get(key)));
+			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 
 		assertEquals(2, PokerHandEvaluator.getHandRank(sortedHistogram, hand));
@@ -65,11 +65,11 @@ public class PokerHandEvaluatorTest {
 				new Card(CardValue.SEVEN, 'H'), new Card(CardValue.TEN, 'D'), new Card(CardValue.JACK, 'H'));
 
 		Map<Integer, Integer> histogram = PokerHandEvaluator.createHistogram(hand);
-		TreeSet<ValueThenKeyComparator> sortedHistogram = new TreeSet<ValueThenKeyComparator>(
+		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(
 				Collections.reverseOrder());
 		
 		for (Integer key : histogram.keySet()) {
-			sortedHistogram.add(new ValueThenKeyComparator(key, histogram.get(key)));
+			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 
 		assertEquals(3, PokerHandEvaluator.getHandRank(sortedHistogram, hand));
@@ -81,11 +81,11 @@ public class PokerHandEvaluatorTest {
 				new Card(CardValue.FIVE, 'D'), new Card(CardValue.SIX, 'H'), new Card(CardValue.SEVEN, 'H'));
 
 		Map<Integer, Integer> histogram = PokerHandEvaluator.createHistogram(hand);
-		TreeSet<ValueThenKeyComparator> sortedHistogram = new TreeSet<ValueThenKeyComparator>(
+		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(
 				Collections.reverseOrder());
 		
 		for (Integer key : histogram.keySet()) {
-			sortedHistogram.add(new ValueThenKeyComparator(key, histogram.get(key)));
+			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 
 		assertEquals(4, PokerHandEvaluator.getHandRank(sortedHistogram, hand));
@@ -97,11 +97,11 @@ public class PokerHandEvaluatorTest {
 				new Card(CardValue.SEVEN, 'H'), new Card(CardValue.NINE, 'H'), new Card(CardValue.KING, 'H'));
 
 		Map<Integer, Integer> histogram = PokerHandEvaluator.createHistogram(hand);
-		TreeSet<ValueThenKeyComparator> sortedHistogram = new TreeSet<ValueThenKeyComparator>(
+		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(
 				Collections.reverseOrder());
 		
 		for (Integer key : histogram.keySet()) {
-			sortedHistogram.add(new ValueThenKeyComparator(key, histogram.get(key)));
+			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 
 		assertEquals(5, PokerHandEvaluator.getHandRank(sortedHistogram, hand));
@@ -113,11 +113,11 @@ public class PokerHandEvaluatorTest {
 				new Card(CardValue.NINE, 'D'), new Card(CardValue.TEN, 'S'), new Card(CardValue.TEN, 'H'));
 
 		Map<Integer, Integer> histogram = PokerHandEvaluator.createHistogram(hand);
-		TreeSet<ValueThenKeyComparator> sortedHistogram = new TreeSet<ValueThenKeyComparator>(
+		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(
 				Collections.reverseOrder());
 		
 		for (Integer key : histogram.keySet()) {
-			sortedHistogram.add(new ValueThenKeyComparator(key, histogram.get(key)));
+			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 
 		assertEquals(6, PokerHandEvaluator.getHandRank(sortedHistogram, hand));
@@ -129,11 +129,11 @@ public class PokerHandEvaluatorTest {
 				new Card(CardValue.TWO, 'D'), new Card(CardValue.TWO, 'S'), new Card(CardValue.QUEEN, 'H'));
 
 		Map<Integer, Integer> histogram = PokerHandEvaluator.createHistogram(hand);
-		TreeSet<ValueThenKeyComparator> sortedHistogram = new TreeSet<ValueThenKeyComparator>(
+		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(
 				Collections.reverseOrder());
 		
 		for (Integer key : histogram.keySet()) {
-			sortedHistogram.add(new ValueThenKeyComparator(key, histogram.get(key)));
+			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 
 		assertEquals(7, PokerHandEvaluator.getHandRank(sortedHistogram, hand));
@@ -145,11 +145,11 @@ public class PokerHandEvaluatorTest {
 				new Card(CardValue.NINE, 'S'), new Card(CardValue.TEN, 'S'), new Card(CardValue.JACK, 'S'));
 
 		Map<Integer, Integer> histogram = PokerHandEvaluator.createHistogram(hand);
-		TreeSet<ValueThenKeyComparator> sortedHistogram = new TreeSet<ValueThenKeyComparator>(
+		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(
 				Collections.reverseOrder());
 		
 		for (Integer key : histogram.keySet()) {
-			sortedHistogram.add(new ValueThenKeyComparator(key, histogram.get(key)));
+			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 
 		assertEquals(8, PokerHandEvaluator.getHandRank(sortedHistogram, hand));
@@ -161,11 +161,11 @@ public class PokerHandEvaluatorTest {
 				new Card(CardValue.QUEEN, 'H'), new Card(CardValue.KING, 'H'), new Card(CardValue.ACE, 'H'));
 
 		Map<Integer, Integer> histogram = PokerHandEvaluator.createHistogram(hand);
-		TreeSet<ValueThenKeyComparator> sortedHistogram = new TreeSet<ValueThenKeyComparator>(
+		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(
 				Collections.reverseOrder());
 
 		for (Integer key : histogram.keySet()) {
-			sortedHistogram.add(new ValueThenKeyComparator(key, histogram.get(key)));
+			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 
 		assertEquals(9, PokerHandEvaluator.getHandRank(sortedHistogram, hand));

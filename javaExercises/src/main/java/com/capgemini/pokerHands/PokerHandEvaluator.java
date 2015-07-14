@@ -19,16 +19,16 @@ public class PokerHandEvaluator {
 
 		// sort the histograms descending: first by quantity, then by the value
 		// of card
-		TreeSet<ValueThenKeyComparator> sortedHistogramP1 = new TreeSet<ValueThenKeyComparator>(
+		TreeSet<CardOccurrenceCounter> sortedHistogramP1 = new TreeSet<CardOccurrenceCounter>(
 				Collections.reverseOrder()),
-				sortedHistogramP2 = new TreeSet<ValueThenKeyComparator>(Collections.reverseOrder());
+				sortedHistogramP2 = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
 
 		for (Integer key : histogramP1.keySet()) {
-			sortedHistogramP1.add(new ValueThenKeyComparator(key, histogramP1.get(key)));
+			sortedHistogramP1.add(new CardOccurrenceCounter(key, histogramP1.get(key)));
 		}
 
 		for (Integer key : histogramP2.keySet()) {
-			sortedHistogramP2.add(new ValueThenKeyComparator(key, histogramP2.get(key)));
+			sortedHistogramP2.add(new CardOccurrenceCounter(key, histogramP2.get(key)));
 		}
 
 		rankP1 = getHandRank(sortedHistogramP1, handP1);
@@ -62,18 +62,18 @@ public class PokerHandEvaluator {
 		return histogram;
 	}
 
-	static int getHandRank(TreeSet<ValueThenKeyComparator> sortedHistogram, List<Card> hand) {
+	static int getHandRank(TreeSet<CardOccurrenceCounter> sortedHistogram, List<Card> hand) {
 
 		int rank = 0;
 		boolean isFlush = true;
 		char color;
 
 		// Convert tree set to array
-		ValueThenKeyComparator[] hArray = sortedHistogram.toArray(new ValueThenKeyComparator[sortedHistogram.size()]);
+		CardOccurrenceCounter[] hArray = sortedHistogram.toArray(new CardOccurrenceCounter[sortedHistogram.size()]);
 
 		// Evaluate the hand
 
-		switch (hArray[0].getValue()) {
+		switch (hArray[0].getNumOfOccurrences()) {
 		case 1:
 
 			// Hand: (1, 1, 1, 1, 1)
@@ -81,7 +81,7 @@ public class PokerHandEvaluator {
 			// enough to check the result of highest_card - lowest_card - if
 			// it's 4, it's straight, otherwise it's high card
 
-			if (hArray[0].getKey() - hArray[4].getKey() == 4) {
+			if (hArray[0].getCardValue() - hArray[4].getCardValue() == 4) {
 
 				// straight or royal straight
 				rank = Rank.STRAIGHT.getValue();
@@ -93,7 +93,7 @@ public class PokerHandEvaluator {
 
 		case 2:
 
-			if (hArray[1].getValue() == 1) {
+			if (hArray[1].getNumOfOccurrences() == 1) {
 
 				// Hand: (2, 1, 1, 1)
 				rank = Rank.ONE_PAIR.getValue();
@@ -106,7 +106,7 @@ public class PokerHandEvaluator {
 
 		case 3:
 
-			if (hArray[1].getValue() == 1) {
+			if (hArray[1].getNumOfOccurrences() == 1) {
 
 				// Hand: (3, 1, 1)
 				rank = Rank.THREE.getValue();
@@ -144,7 +144,7 @@ public class PokerHandEvaluator {
 			if (rank == Rank.STRAIGHT.getValue()) {
 				rank = Rank.STRAIGHT_FLUSH.getValue();
 
-				if (hArray[0].getKey() == CardValue.ACE.getValue()) {
+				if (hArray[0].getCardValue() == CardValue.ACE.getValue()) {
 					rank = Rank.ROYAL_FLUSH.getValue();
 				}
 			}
@@ -153,19 +153,19 @@ public class PokerHandEvaluator {
 		return rank;
 	}
 
-	static int HigherCard(TreeSet<ValueThenKeyComparator> sortedHistogramP1,
-			TreeSet<ValueThenKeyComparator> sortedHistogramP2) {
+	static int HigherCard(TreeSet<CardOccurrenceCounter> sortedHistogramP1,
+			TreeSet<CardOccurrenceCounter> sortedHistogramP2) {
 
 		// Convert tree sets to arrays
-		ValueThenKeyComparator[] hArrayP1 = sortedHistogramP1
-				.toArray(new ValueThenKeyComparator[sortedHistogramP1.size()]);
-		ValueThenKeyComparator[] hArrayP2 = sortedHistogramP2
-				.toArray(new ValueThenKeyComparator[sortedHistogramP2.size()]);
+		CardOccurrenceCounter[] hArrayP1 = sortedHistogramP1
+				.toArray(new CardOccurrenceCounter[sortedHistogramP1.size()]);
+		CardOccurrenceCounter[] hArrayP2 = sortedHistogramP2
+				.toArray(new CardOccurrenceCounter[sortedHistogramP2.size()]);
 
 		// Compare highest cards of players
 		for (int i = 0; i < hArrayP1.length; i++) {
-			if (hArrayP1[i].getKey() != hArrayP2[i].getKey()) {
-				return hArrayP1[i].getKey() > hArrayP2[i].getKey() ? 1 : 2;
+			if (hArrayP1[i].getCardValue() != hArrayP2[i].getCardValue()) {
+				return hArrayP1[i].getCardValue() > hArrayP2[i].getCardValue() ? 1 : 2;
 			}
 		}
 
