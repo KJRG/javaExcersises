@@ -37,8 +37,11 @@ public class PokerHands {
 					CardValue value = CardValue.fromChar(card.charAt(0));
 					player2Cards.add(new Card(value, card.charAt(1)));
 				}
+				
+				Hand handPlayer1 = new Hand(player1Cards);
+				Hand handPlayer2 = new Hand(player2Cards);
 
-				if (PokerHandEvaluator.findWinner(player1Cards, player2Cards) >= 1) {
+				if (handPlayer1.compareTo(handPlayer2) >= 0) {
 					wins++;
 				}
 
