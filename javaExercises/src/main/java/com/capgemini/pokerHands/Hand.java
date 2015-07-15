@@ -18,9 +18,10 @@ public class Hand implements Comparable<Hand> {
 		return this.cards;
 	}
 	
-	Map<Integer, Integer> createHistogram(List<Card> hand) {
-		Map<Integer, Integer> histogram = new HashMap<Integer, Integer>();
-		Integer cardValue = 0, quantity = 0;
+	Map<CardValue, Integer> createHistogram(List<Card> hand) {
+		Map<CardValue, Integer> histogram = new HashMap<CardValue, Integer>();
+		CardValue cardValue;
+		Integer quantity = 0;
 
 		for (Card c : hand) {
 			cardValue = c.getValue();
@@ -57,7 +58,7 @@ public class Hand implements Comparable<Hand> {
 			 * - if it's 4, it's straight, otherwise it's high card
 			 */
 			
-			if (hList.get(0).getCardValue() - hList.get(4).getCardValue() == 4) {
+			if (hList.get(0).getCardValue().getValue() - hList.get(4).getCardValue().getValue() == 4) {
 
 				/* straight or royal straight */
 				rank = Rank.STRAIGHT;
@@ -119,7 +120,7 @@ public class Hand implements Comparable<Hand> {
 			if (rank.getValue() == Rank.STRAIGHT.getValue()) {
 				rank = Rank.STRAIGHT_FLUSH;
 
-				if (hList.get(0).getCardValue() == CardValue.ACE.getValue()) {
+				if (hList.get(0).getCardValue() == CardValue.ACE) {
 					rank = Rank.ROYAL_FLUSH;
 				}
 			}
@@ -138,7 +139,7 @@ public class Hand implements Comparable<Hand> {
 		// Compare highest cards of players
 		for (int i = 0; i < hListP1.size(); i++) {
 			if (hListP1.get(i).getCardValue() != hListP2.get(i).getCardValue()) {
-				return hListP1.get(i).getCardValue() > hListP2.get(i).getCardValue() ? 1 : -1;
+				return hListP1.get(i).getCardValue().getValue() > hListP2.get(i).getCardValue().getValue() ? 1 : -1;
 			}
 		}
 
@@ -152,7 +153,7 @@ public class Hand implements Comparable<Hand> {
 		 * key is the value of card, value is the quantity
 		 * of this card in the hand of player
 		 */
-		Map<Integer, Integer>	histogramP1 = createHistogram(this.getCards()),
+		Map<CardValue, Integer>	histogramP1 = createHistogram(this.getCards()),
 								histogramP2 = createHistogram(o.getCards());
 		
 		/*
@@ -162,11 +163,11 @@ public class Hand implements Comparable<Hand> {
 		TreeSet<CardOccurrenceCounter>	sortedHistogramP1 = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder()),
 										sortedHistogramP2 = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
 
-		for (Integer key : histogramP1.keySet()) {
+		for (CardValue key : histogramP1.keySet()) {
 			sortedHistogramP1.add(new CardOccurrenceCounter(key, histogramP1.get(key)));
 		}
 
-		for (Integer key : histogramP2.keySet()) {
+		for (CardValue key : histogramP2.keySet()) {
 			sortedHistogramP2.add(new CardOccurrenceCounter(key, histogramP2.get(key)));
 		}
 

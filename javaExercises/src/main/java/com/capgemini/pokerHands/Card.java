@@ -9,8 +9,8 @@ public class Card {
 		this.suit = s;
 	}
 
-	public int getValue() {
-		return this.value.getValue();
+	public CardValue getValue() {
+		return this.value;
 	}
 
 	public char getSuit() {

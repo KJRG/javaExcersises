@@ -17,10 +17,10 @@ public class HandTest {
 				new Card(CardValue.SEVEN, 'C'), new Card(CardValue.TEN, 'S'), new Card(CardValue.KING, 'H'));
 		Hand hand = new Hand(cards);
 
-		Map<Integer, Integer> histogram = hand.createHistogram(cards);
+		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
 		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
 
-		for (Integer key : histogram.keySet()) {
+		for (CardValue key : histogram.keySet()) {
 			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 
@@ -33,9 +33,9 @@ public class HandTest {
 				new Card(CardValue.THREE, 'D'), new Card(CardValue.EIGHT, 'H'), new Card(CardValue.JACK, 'S'));
 		Hand hand = new Hand(cards);
 
-		Map<Integer, Integer> histogram = hand.createHistogram(cards);
+		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
 		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
-		for (Integer key : histogram.keySet()) {
+		for (CardValue key : histogram.keySet()) {
 			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 
@@ -48,10 +48,10 @@ public class HandTest {
 				new Card(CardValue.EIGHT, 'H'), new Card(CardValue.EIGHT, 'S'), new Card(CardValue.ACE, 'S'));
 		Hand hand = new Hand(cards);
 
-		Map<Integer, Integer> histogram = hand.createHistogram(cards);
+		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
 		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
 
-		for (Integer key : histogram.keySet()) {
+		for (CardValue key : histogram.keySet()) {
 			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 
@@ -64,10 +64,10 @@ public class HandTest {
 				new Card(CardValue.SEVEN, 'H'), new Card(CardValue.TEN, 'D'), new Card(CardValue.JACK, 'H'));
 		Hand hand = new Hand(cards);
 
-		Map<Integer, Integer> histogram = hand.createHistogram(cards);
+		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
 		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
 
-		for (Integer key : histogram.keySet()) {
+		for (CardValue key : histogram.keySet()) {
 			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 
@@ -80,10 +80,10 @@ public class HandTest {
 				new Card(CardValue.FIVE, 'D'), new Card(CardValue.SIX, 'H'), new Card(CardValue.SEVEN, 'H'));
 		Hand hand = new Hand(cards);
 
-		Map<Integer, Integer> histogram = hand.createHistogram(cards);
+		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
 		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
 
-		for (Integer key : histogram.keySet()) {
+		for (CardValue key : histogram.keySet()) {
 			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 
@@ -96,10 +96,10 @@ public class HandTest {
 				new Card(CardValue.SEVEN, 'H'), new Card(CardValue.NINE, 'H'), new Card(CardValue.KING, 'H'));
 		Hand hand = new Hand(cards);
 
-		Map<Integer, Integer> histogram = hand.createHistogram(cards);
+		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
 		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
 
-		for (Integer key : histogram.keySet()) {
+		for (CardValue key : histogram.keySet()) {
 			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 
@@ -112,10 +112,10 @@ public class HandTest {
 				new Card(CardValue.NINE, 'D'), new Card(CardValue.TEN, 'S'), new Card(CardValue.TEN, 'H'));
 		Hand hand = new Hand(cards);
 
-		Map<Integer, Integer> histogram = hand.createHistogram(cards);
+		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
 		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
 
-		for (Integer key : histogram.keySet()) {
+		for (CardValue key : histogram.keySet()) {
 			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 
@@ -128,10 +128,10 @@ public class HandTest {
 				new Card(CardValue.TWO, 'D'), new Card(CardValue.TWO, 'S'), new Card(CardValue.QUEEN, 'H'));
 		Hand hand = new Hand(cards);
 
-		Map<Integer, Integer> histogram = hand.createHistogram(cards);
+		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
 		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
 
-		for (Integer key : histogram.keySet()) {
+		for (CardValue key : histogram.keySet()) {
 			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 
@@ -144,10 +144,10 @@ public class HandTest {
 				new Card(CardValue.NINE, 'S'), new Card(CardValue.TEN, 'S'), new Card(CardValue.JACK, 'S'));
 		Hand hand = new Hand(cards);
 
-		Map<Integer, Integer> histogram = hand.createHistogram(cards);
+		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
 		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
 
-		for (Integer key : histogram.keySet()) {
+		for (CardValue key : histogram.keySet()) {
 			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 
@@ -160,10 +160,10 @@ public class HandTest {
 				new Card(CardValue.QUEEN, 'H'), new Card(CardValue.KING, 'H'), new Card(CardValue.ACE, 'H'));
 		Hand hand = new Hand(cards);
 
-		Map<Integer, Integer> histogram = hand.createHistogram(cards);
+		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
 		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
 
-		for (Integer key : histogram.keySet()) {
+		for (CardValue key : histogram.keySet()) {
 			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 

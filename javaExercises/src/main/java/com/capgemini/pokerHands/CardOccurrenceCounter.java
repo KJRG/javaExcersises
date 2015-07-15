@@ -2,9 +2,10 @@ package com.capgemini.pokerHands;
 
 public class CardOccurrenceCounter implements Comparable<CardOccurrenceCounter> {
 
-	private int cardValue, numOfOccurrences;
+	private int numOfOccurrences;
+	private CardValue cardValue;
 
-	public int getCardValue() {
+	public CardValue getCardValue() {
 		return cardValue;
 	}
 
@@ -12,14 +13,14 @@ public class CardOccurrenceCounter implements Comparable<CardOccurrenceCounter> 
 		return numOfOccurrences;
 	}
 
-	public CardOccurrenceCounter(int key, int value) {
+	public CardOccurrenceCounter(CardValue key, int value) {
 		super();
 		this.cardValue = key;
 		this.numOfOccurrences = value;
 	}
 
 	public int compareTo(CardOccurrenceCounter o) {
-		return (this.numOfOccurrences == o.numOfOccurrences) ? (this.cardValue - o.cardValue) : (this.numOfOccurrences - o.numOfOccurrences);
+		return (this.numOfOccurrences == o.numOfOccurrences) ? (this.cardValue.getValue() - o.cardValue.getValue()) : (this.numOfOccurrences - o.numOfOccurrences);
 	}
 
 }
