@@ -17,14 +17,9 @@ public class HandTest {
 				new Card(CardValue.SEVEN, 'C'), new Card(CardValue.TEN, 'S'), new Card(CardValue.KING, 'H'));
 		Hand hand = new Hand(cards);
 
-		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
-		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
+		TreeSet<CardOccurrenceCounter> histogram = hand.createHistogram(cards);
 
-		for (CardValue key : histogram.keySet()) {
-			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
-		}
-
-		assertEquals(Rank.HIGH_CARD, hand.getHandRank(sortedHistogram, cards));
+		assertEquals(Rank.HIGH_CARD, hand.getHandRank(histogram, cards));
 	}
 
 	@Test
@@ -33,13 +28,9 @@ public class HandTest {
 				new Card(CardValue.THREE, 'D'), new Card(CardValue.EIGHT, 'H'), new Card(CardValue.JACK, 'S'));
 		Hand hand = new Hand(cards);
 
-		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
-		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
-		for (CardValue key : histogram.keySet()) {
-			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
-		}
+		TreeSet<CardOccurrenceCounter> histogram = hand.createHistogram(cards);
 
-		assertEquals(Rank.ONE_PAIR, hand.getHandRank(sortedHistogram, cards));
+		assertEquals(Rank.ONE_PAIR, hand.getHandRank(histogram, cards));
 	}
 
 	@Test
@@ -48,14 +39,9 @@ public class HandTest {
 				new Card(CardValue.EIGHT, 'H'), new Card(CardValue.EIGHT, 'S'), new Card(CardValue.ACE, 'S'));
 		Hand hand = new Hand(cards);
 
-		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
-		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
+		TreeSet<CardOccurrenceCounter> histogram = hand.createHistogram(cards);
 
-		for (CardValue key : histogram.keySet()) {
-			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
-		}
-
-		assertEquals(Rank.TWO_PAIRS, hand.getHandRank(sortedHistogram, cards));
+		assertEquals(Rank.TWO_PAIRS, hand.getHandRank(histogram, cards));
 	}
 
 	@Test
@@ -64,14 +50,9 @@ public class HandTest {
 				new Card(CardValue.SEVEN, 'H'), new Card(CardValue.TEN, 'D'), new Card(CardValue.JACK, 'H'));
 		Hand hand = new Hand(cards);
 
-		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
-		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
+		TreeSet<CardOccurrenceCounter> histogram = hand.createHistogram(cards);
 
-		for (CardValue key : histogram.keySet()) {
-			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
-		}
-
-		assertEquals(Rank.THREE, hand.getHandRank(sortedHistogram, cards));
+		assertEquals(Rank.THREE, hand.getHandRank(histogram, cards));
 	}
 
 	@Test
@@ -80,14 +61,9 @@ public class HandTest {
 				new Card(CardValue.FIVE, 'D'), new Card(CardValue.SIX, 'H'), new Card(CardValue.SEVEN, 'H'));
 		Hand hand = new Hand(cards);
 
-		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
-		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
+		TreeSet<CardOccurrenceCounter> histogram = hand.createHistogram(cards);
 
-		for (CardValue key : histogram.keySet()) {
-			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
-		}
-
-		assertEquals(Rank.STRAIGHT, hand.getHandRank(sortedHistogram, cards));
+		assertEquals(Rank.STRAIGHT, hand.getHandRank(histogram, cards));
 	}
 
 	@Test
@@ -96,14 +72,9 @@ public class HandTest {
 				new Card(CardValue.SEVEN, 'H'), new Card(CardValue.NINE, 'H'), new Card(CardValue.KING, 'H'));
 		Hand hand = new Hand(cards);
 
-		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
-		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
+		TreeSet<CardOccurrenceCounter> histogram = hand.createHistogram(cards);
 
-		for (CardValue key : histogram.keySet()) {
-			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
-		}
-
-		assertEquals(Rank.FLUSH, hand.getHandRank(sortedHistogram, cards));
+		assertEquals(Rank.FLUSH, hand.getHandRank(histogram, cards));
 	}
 
 	@Test
@@ -112,14 +83,9 @@ public class HandTest {
 				new Card(CardValue.NINE, 'D'), new Card(CardValue.TEN, 'S'), new Card(CardValue.TEN, 'H'));
 		Hand hand = new Hand(cards);
 
-		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
-		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
+		TreeSet<CardOccurrenceCounter> histogram = hand.createHistogram(cards);
 
-		for (CardValue key : histogram.keySet()) {
-			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
-		}
-
-		assertEquals(Rank.FULL_HOUSE, hand.getHandRank(sortedHistogram, cards));
+		assertEquals(Rank.FULL_HOUSE, hand.getHandRank(histogram, cards));
 	}
 
 	@Test
@@ -128,14 +94,9 @@ public class HandTest {
 				new Card(CardValue.TWO, 'D'), new Card(CardValue.TWO, 'S'), new Card(CardValue.QUEEN, 'H'));
 		Hand hand = new Hand(cards);
 
-		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
-		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
+		TreeSet<CardOccurrenceCounter> histogram = hand.createHistogram(cards);
 
-		for (CardValue key : histogram.keySet()) {
-			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
-		}
-
-		assertEquals(Rank.FOUR, hand.getHandRank(sortedHistogram, cards));
+		assertEquals(Rank.FOUR, hand.getHandRank(histogram, cards));
 	}
 
 	@Test
@@ -144,14 +105,9 @@ public class HandTest {
 				new Card(CardValue.NINE, 'S'), new Card(CardValue.TEN, 'S'), new Card(CardValue.JACK, 'S'));
 		Hand hand = new Hand(cards);
 
-		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
-		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
+		TreeSet<CardOccurrenceCounter> histogram = hand.createHistogram(cards);
 
-		for (CardValue key : histogram.keySet()) {
-			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
-		}
-
-		assertEquals(Rank.STRAIGHT_FLUSH, hand.getHandRank(sortedHistogram, cards));
+		assertEquals(Rank.STRAIGHT_FLUSH, hand.getHandRank(histogram, cards));
 	}
 
 	@Test
@@ -160,14 +116,9 @@ public class HandTest {
 				new Card(CardValue.QUEEN, 'H'), new Card(CardValue.KING, 'H'), new Card(CardValue.ACE, 'H'));
 		Hand hand = new Hand(cards);
 
-		Map<CardValue, Integer> histogram = hand.createHistogram(cards);
-		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
+		TreeSet<CardOccurrenceCounter> histogram = hand.createHistogram(cards);
 
-		for (CardValue key : histogram.keySet()) {
-			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
-		}
-
-		assertEquals(Rank.ROYAL_FLUSH, hand.getHandRank(sortedHistogram, cards));
+		assertEquals(Rank.ROYAL_FLUSH, hand.getHandRank(histogram, cards));
 	}
 
 }

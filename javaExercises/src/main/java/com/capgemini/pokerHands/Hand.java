@@ -18,7 +18,7 @@ public class Hand implements Comparable<Hand> {
 		return this.cards;
 	}
 	
-	Map<CardValue, Integer> createHistogram(List<Card> hand) {
+	TreeSet<CardOccurrenceCounter> createHistogram(List<Card> hand) {
 		Map<CardValue, Integer> histogram = new HashMap<CardValue, Integer>();
 		CardValue cardValue;
 		Integer quantity = 0;
@@ -35,7 +35,17 @@ public class Hand implements Comparable<Hand> {
 			histogram.put(cardValue, 1);
 		}
 
-		return histogram;
+		
+		/*
+		 * sort the histograms descending:
+		 * first by quantity, then by the value of card
+		 */
+		TreeSet<CardOccurrenceCounter>	sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
+		for (CardValue key : histogram.keySet()) {
+			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
+		}
+		
+		return sortedHistogram;
 	}
 	
 	Rank getHandRank(TreeSet<CardOccurrenceCounter> sortedHistogram, List<Card> hand) {
@@ -153,27 +163,12 @@ public class Hand implements Comparable<Hand> {
 		 * key is the value of card, value is the quantity
 		 * of this card in the hand of player
 		 */
-		Map<CardValue, Integer>	histogramP1 = createHistogram(this.getCards()),
-								histogramP2 = createHistogram(o.getCards());
+		TreeSet<CardOccurrenceCounter>	histogramP1 = createHistogram(this.getCards()),
+										histogramP2 = createHistogram(o.getCards());
+
+		Rank rankP1 = getHandRank(histogramP1, this.getCards()),
+			 rankP2 = getHandRank(histogramP2, o.getCards());
 		
-		/*
-		 * sort the histograms descending:
-		 * first by quantity, then by the value of card
-		 */
-		TreeSet<CardOccurrenceCounter>	sortedHistogramP1 = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder()),
-										sortedHistogramP2 = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
-
-		for (CardValue key : histogramP1.keySet()) {
-			sortedHistogramP1.add(new CardOccurrenceCounter(key, histogramP1.get(key)));
-		}
-
-		for (CardValue key : histogramP2.keySet()) {
-			sortedHistogramP2.add(new CardOccurrenceCounter(key, histogramP2.get(key)));
-		}
-
-		Rank rankP1 = getHandRank(sortedHistogramP1, this.getCards()),
-			 rankP2 = getHandRank(sortedHistogramP2, o.getCards());
-		
-		return rankP1 == rankP2 ? HigherCard(sortedHistogramP1, sortedHistogramP2) : (rankP1.getValue() - rankP2.getValue());
+		return rankP1 == rankP2 ? HigherCard(histogramP1, histogramP2) : (rankP1.getValue() - rankP2.getValue());
 	}
 }
