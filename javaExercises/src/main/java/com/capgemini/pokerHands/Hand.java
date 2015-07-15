@@ -37,9 +37,9 @@ public class Hand implements Comparable<Hand> {
 		return histogram;
 	}
 	
-	int getHandRank(TreeSet<CardOccurrenceCounter> sortedHistogram, List<Card> hand) {
+	Rank getHandRank(TreeSet<CardOccurrenceCounter> sortedHistogram, List<Card> hand) {
 
-		int rank = 0;
+		Rank rank = Rank.HIGH_CARD;
 		boolean isFlush = true;
 		char color;
 
@@ -60,11 +60,11 @@ public class Hand implements Comparable<Hand> {
 			if (hList.get(0).getCardValue() - hList.get(4).getCardValue() == 4) {
 
 				/* straight or royal straight */
-				rank = Rank.STRAIGHT.getValue();
+				rank = Rank.STRAIGHT;
 				break;
 			}
 
-			rank = Rank.HIGH_CARD.getValue();
+			rank = Rank.HIGH_CARD;
 			break;
 
 		case 2:
@@ -72,12 +72,12 @@ public class Hand implements Comparable<Hand> {
 			if (hList.get(1).getNumOfOccurrences() == 1) {
 
 				/* Hand: (2, 1, 1, 1) */
-				rank = Rank.ONE_PAIR.getValue();
+				rank = Rank.ONE_PAIR;
 				break;
 			}
 
 			/* Hand: (2, 2, 1) */
-			rank = Rank.TWO_PAIRS.getValue();
+			rank = Rank.TWO_PAIRS;
 			break;
 
 		case 3:
@@ -85,18 +85,18 @@ public class Hand implements Comparable<Hand> {
 			if (hList.get(1).getNumOfOccurrences() == 1) {
 
 				/* Hand: (3, 1, 1) */
-				rank = Rank.THREE.getValue();
+				rank = Rank.THREE;
 				break;
 			}
 
 			/* Hand: (3, 2) */
-			rank = Rank.FULL_HOUSE.getValue();
+			rank = Rank.FULL_HOUSE;
 			break;
 
 		case 4:
 
 			/* Hand: (4, 1) */
-			rank = Rank.FOUR.getValue();
+			rank = Rank.FOUR;
 			break;
 		}
 
@@ -111,16 +111,16 @@ public class Hand implements Comparable<Hand> {
 		}
 
 		if (isFlush) {
-			if (rank < Rank.STRAIGHT.getValue()) {
-				rank = Rank.FLUSH.getValue();
+			if (rank.getValue() < Rank.STRAIGHT.getValue()) {
+				rank = Rank.FLUSH;
 				return rank;
 			}
 
-			if (rank == Rank.STRAIGHT.getValue()) {
-				rank = Rank.STRAIGHT_FLUSH.getValue();
+			if (rank.getValue() == Rank.STRAIGHT.getValue()) {
+				rank = Rank.STRAIGHT_FLUSH;
 
 				if (hList.get(0).getCardValue() == CardValue.ACE.getValue()) {
-					rank = Rank.ROYAL_FLUSH.getValue();
+					rank = Rank.ROYAL_FLUSH;
 				}
 			}
 		}
@@ -170,9 +170,9 @@ public class Hand implements Comparable<Hand> {
 			sortedHistogramP2.add(new CardOccurrenceCounter(key, histogramP2.get(key)));
 		}
 
-		int rankP1 = getHandRank(sortedHistogramP1, this.getCards()),
-			rankP2 = getHandRank(sortedHistogramP2, o.getCards());
+		Rank rankP1 = getHandRank(sortedHistogramP1, this.getCards()),
+			 rankP2 = getHandRank(sortedHistogramP2, o.getCards());
 		
-		return rankP1 == rankP2 ? HigherCard(sortedHistogramP1, sortedHistogramP2) : (rankP1 - rankP2);
+		return rankP1 == rankP2 ? HigherCard(sortedHistogramP1, sortedHistogramP2) : (rankP1.getValue() - rankP2.getValue());
 	}
 }
