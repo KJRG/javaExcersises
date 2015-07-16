@@ -56,7 +56,7 @@ public class Coins {
 		}
 
 		/*
-		 * reversing each of other coins can give up to 2 pairs more or less
+		 * reversing each of other coins can give 2 pairs more or less (or no change)
 		 */
 		for (int i = 1; i < coins.size() - 1; i++) {
 			currentAdjacency = initialAdjacency;

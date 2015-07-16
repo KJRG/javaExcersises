@@ -56,8 +56,8 @@ public class NodeValidators {
 		String current = "----", successor = null;
 
 		/*
-		 * check if there is any node with predecessorId = "----" if not, there
-		 * is a cycle in the graphs
+		 * check if there is any node with predecessorId = "----" - if not,
+		 * there is a cycle in the graph
 		 */
 		for (int i = 0; i < nodes.size(); i++) {
 			if (nodes.get(i).getPredecessorId() == current) {

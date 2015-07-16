@@ -48,18 +48,25 @@ public class Taxi extends Observable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null || (getClass() != obj.getClass())) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		}
+
 		Taxi other = (Taxi) obj;
 		if (taxiId == null) {
-			if (other.taxiId != null)
+			if (other.taxiId != null) {
 				return false;
-		} else if (!taxiId.equals(other.taxiId))
+			}
+
+			return true;
+		}
+		if (!taxiId.equals(other.taxiId)) {
 			return false;
+		}
+
 		return true;
 	}
 
