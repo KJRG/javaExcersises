@@ -39,74 +39,79 @@ public class Hand implements Comparable<Hand> {
 		 * sort the histograms descending: first by quantity, then by the value
 		 * of card
 		 */
-		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(Collections.reverseOrder());
+		TreeSet<CardOccurrenceCounter> sortedHistogram = new TreeSet<CardOccurrenceCounter>(
+				Collections.reverseOrder());
 		for (CardValue key : histogram.keySet()) {
-			sortedHistogram.add(new CardOccurrenceCounter(key, histogram.get(key)));
+			sortedHistogram
+					.add(new CardOccurrenceCounter(key, histogram.get(key)));
 		}
 
 		return sortedHistogram;
 	}
 
-	Rank getHandRank(TreeSet<CardOccurrenceCounter> sortedHistogram, List<Card> hand) {
+	Rank getHandRank(TreeSet<CardOccurrenceCounter> sortedHistogram,
+			List<Card> hand) {
 
 		Rank rank = Rank.HIGH_CARD;
 		boolean isFlush = true;
 		CardSuit suit;
 
-		List<CardOccurrenceCounter> hList = new ArrayList<CardOccurrenceCounter>(sortedHistogram);
+		List<CardOccurrenceCounter> hList = new ArrayList<CardOccurrenceCounter>(
+				sortedHistogram);
 
 		// Evaluate the hand
 		switch (hList.get(0).getNumOfOccurrences()) {
-		case 1:
+			case 1 :
 
-			/*
-			 * Histogram: (1, 1, 1, 1, 1) The histogram is sorted - to check if
-			 * there is a straight, it's enough to check the result of
-			 * highest_card - lowest_card - if it's 4, it's straight, otherwise
-			 * it's high card
-			 */
+				/*
+				 * Histogram: (1, 1, 1, 1, 1) The histogram is sorted - to check
+				 * if there is a straight, it's enough to check the result of
+				 * highest_card - lowest_card - if it's 4, it's straight,
+				 * otherwise it's high card
+				 */
 
-			if (hList.get(0).getCardValue().getValue() - hList.get(4).getCardValue().getValue() == 4) {
+				if (hList.get(0).getCardValue().getValue()
+						- hList.get(4).getCardValue().getValue() == 4) {
 
-				/* straight or royal straight */
-				rank = Rank.STRAIGHT;
+					/* straight or royal straight */
+					rank = Rank.STRAIGHT;
+					break;
+				}
+
+				rank = Rank.HIGH_CARD;
 				break;
-			}
 
-			rank = Rank.HIGH_CARD;
-			break;
+			case 2 :
 
-		case 2:
+				if (hList.get(1).getNumOfOccurrences() == 1) {
 
-			if (hList.get(1).getNumOfOccurrences() == 1) {
+					/* Histogram: (2, 1, 1, 1) */
+					rank = Rank.ONE_PAIR;
+					break;
+				}
 
-				/* Histogram: (2, 1, 1, 1) */
-				rank = Rank.ONE_PAIR;
+				/* Histogram: (2, 2, 1) */
+				rank = Rank.TWO_PAIRS;
 				break;
-			}
 
-			/* Histogram: (2, 2, 1) */
-			rank = Rank.TWO_PAIRS;
-			break;
+			case 3 :
 
-		case 3:
+				if (hList.get(1).getNumOfOccurrences() == 1) {
 
-			if (hList.get(1).getNumOfOccurrences() == 1) {
+					/* Histogram: (3, 1, 1) */
+					rank = Rank.THREE;
+					break;
+				}
 
-				/* Histogram: (3, 1, 1) */
-				rank = Rank.THREE;
+				/* Histogram: (3, 2) */
+				rank = Rank.FULL_HOUSE;
 				break;
-			}
 
-			/* Histogram: (3, 2) */
-			rank = Rank.FULL_HOUSE;
-			break;
+			case 4 :
 
-		case 4:
-
-			/* Histogram: (4, 1) */
-			rank = Rank.FOUR;
-			break;
+				/* Histogram: (4, 1) */
+				rank = Rank.FOUR;
+				break;
 		}
 
 		// Check if there's flush or not
@@ -137,15 +142,20 @@ public class Hand implements Comparable<Hand> {
 		return rank;
 	}
 
-	int HigherCard(TreeSet<CardOccurrenceCounter> sortedHistogramP1, TreeSet<CardOccurrenceCounter> sortedHistogramP2) {
+	int HigherCard(TreeSet<CardOccurrenceCounter> sortedHistogramP1,
+			TreeSet<CardOccurrenceCounter> sortedHistogramP2) {
 
-		List<CardOccurrenceCounter> hListP1 = new ArrayList<CardOccurrenceCounter>(sortedHistogramP1),
-				hListP2 = new ArrayList<CardOccurrenceCounter>(sortedHistogramP2);
+		List<CardOccurrenceCounter> hListP1 = new ArrayList<CardOccurrenceCounter>(
+				sortedHistogramP1),
+				hListP2 = new ArrayList<CardOccurrenceCounter>(
+						sortedHistogramP2);
 
 		// Compare highest cards of players
 		for (int i = 0; i < hListP1.size(); i++) {
-			if (hListP1.get(i).getCardValue() != hListP2.get(i).getCardValue()) {
-				return hListP1.get(i).getCardValue().getValue() > hListP2.get(i).getCardValue().getValue() ? 1 : -1;
+			if (hListP1.get(i).getCardValue() != hListP2.get(i)
+					.getCardValue()) {
+				return hListP1.get(i).getCardValue().getValue() > hListP2.get(i)
+						.getCardValue().getValue() ? 1 : -1;
 			}
 		}
 
@@ -154,11 +164,15 @@ public class Hand implements Comparable<Hand> {
 
 	public int compareTo(Hand o) {
 
-		TreeSet<CardOccurrenceCounter> histogramP1 = createHistogram(this.getCards()),
+		TreeSet<CardOccurrenceCounter> histogramP1 = createHistogram(
+				this.getCards()),
 				histogramP2 = createHistogram(o.getCards());
 
-		Rank rankP1 = getHandRank(histogramP1, this.getCards()), rankP2 = getHandRank(histogramP2, o.getCards());
+		Rank rankP1 = getHandRank(histogramP1, this.getCards()),
+				rankP2 = getHandRank(histogramP2, o.getCards());
 
-		return rankP1 == rankP2 ? HigherCard(histogramP1, histogramP2) : (rankP1.getValue() - rankP2.getValue());
+		return rankP1 == rankP2
+				? HigherCard(histogramP1, histogramP2)
+				: (rankP1.getValue() - rankP2.getValue());
 	}
 }

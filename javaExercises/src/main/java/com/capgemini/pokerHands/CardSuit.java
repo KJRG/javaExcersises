@@ -29,6 +29,7 @@ public enum CardSuit {
 			}
 		}
 
-		throw new IllegalArgumentException("No constant with char " + s + " found");
+		throw new IllegalArgumentException(
+				"No constant with char " + s + " found");
 	}
 }

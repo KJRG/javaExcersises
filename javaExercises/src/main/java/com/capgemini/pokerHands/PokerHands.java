@@ -11,7 +11,8 @@ public class PokerHands {
 	public int PlayerOneWins(String filename) throws IOException {
 		int wins = 0;
 
-		List<Card> player1Cards = new ArrayList<Card>(), player2Cards = new ArrayList<Card>();
+		List<Card> player1Cards = new ArrayList<Card>(),
+				player2Cards = new ArrayList<Card>();
 		Path fullFilepath = Paths.get(filename);
 
 		Scanner scanner = null;
@@ -37,7 +38,8 @@ public class PokerHands {
 					player2Cards.add(new Card(value, suit));
 				}
 
-				Hand handPlayer1 = new Hand(player1Cards), handPlayer2 = new Hand(player2Cards);
+				Hand handPlayer1 = new Hand(player1Cards),
+						handPlayer2 = new Hand(player2Cards);
 
 				if (handPlayer1.compareTo(handPlayer2) >= 0) {
 					wins++;

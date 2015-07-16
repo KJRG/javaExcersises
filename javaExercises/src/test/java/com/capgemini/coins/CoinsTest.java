@@ -11,25 +11,25 @@ public class CoinsTest {
 
 	@Test
 	public void shouldReturn4For1_1_0_1_0_0() {
-		List<Integer> coinsList = Arrays.asList( 1, 1, 0, 1, 0, 0 );	// +2 (4)
+		List<Integer> coinsList = Arrays.asList(1, 1, 0, 1, 0, 0); // +2 (4)
 		assertEquals(4, Coins.solution(coinsList));
 	}
-	
+
 	@Test
 	public void shouldReturn4For1_1_0_0_0_1() {
-		List<Integer> coinsList = Arrays.asList( 1, 1, 0, 0, 0, 1 );	// +1 (4)
+		List<Integer> coinsList = Arrays.asList(1, 1, 0, 0, 0, 1); // +1 (4)
 		assertEquals(4, Coins.solution(coinsList));
 	}
 
 	@Test
 	public void shouldReturn4For1_1_1_1_1_1() {
-		List<Integer> coinsList = Arrays.asList( 1, 1, 1, 1, 1, 1 );	// -1 (4)
+		List<Integer> coinsList = Arrays.asList(1, 1, 1, 1, 1, 1); // -1 (4)
 		assertEquals(4, Coins.solution(coinsList));
 	}
 
 	@Test
 	public void shouldReturn0For1() {
-		List<Integer> coinsList = Arrays.asList( 1 );	// size = 1 (0)
+		List<Integer> coinsList = Arrays.asList(1); // size = 1 (0)
 		assertEquals(0, Coins.solution(coinsList));
 	}
 }

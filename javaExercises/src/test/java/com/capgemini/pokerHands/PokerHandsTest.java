@@ -11,7 +11,7 @@ public class PokerHandsTest {
 	public void shouldReturn376ForFilePokertxt() {
 		PokerHands ph = new PokerHands();
 		int w = 0;
-		
+
 		try {
 			w = ph.PlayerOneWins("src/main/resources/poker.txt");
 		} catch (IOException e) {

@@ -9,7 +9,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class FindNearestTaxi implements Observer {
-	
+
 	private static final int MAX_DISTANCE_TO_CLIENT = 1000;
 
 	private int maxNumOfTaxisToReturn;
@@ -33,7 +33,8 @@ public class FindNearestTaxi implements Observer {
 	}
 
 	private void updateTaxiData(Taxi t) {
-		if (t.isFree() && clientPosition.Distance(t.position) <= MAX_DISTANCE_TO_CLIENT) {
+		if (t.isFree() && clientPosition
+				.Distance(t.position) <= MAX_DISTANCE_TO_CLIENT) {
 			nearTaxis.add(t);
 			return;
 		}
@@ -43,7 +44,8 @@ public class FindNearestTaxi implements Observer {
 
 	public List<Taxi> getNearestTaxis() {
 		List<Taxi> nearest = new ArrayList<Taxi>(nearTaxis);
-		TaxiDistanceComparator tdk = new TaxiDistanceComparator(clientPosition.getX(), clientPosition.getY());
+		TaxiDistanceComparator tdk = new TaxiDistanceComparator(
+				clientPosition.getX(), clientPosition.getY());
 
 		Collections.sort(nearest, tdk);
 

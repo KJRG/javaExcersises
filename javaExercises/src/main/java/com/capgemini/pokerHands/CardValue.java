@@ -44,6 +44,7 @@ public enum CardValue {
 			}
 		}
 
-		throw new IllegalArgumentException("No constant with char " + c + " found");
+		throw new IllegalArgumentException(
+				"No constant with char " + c + " found");
 	}
 }

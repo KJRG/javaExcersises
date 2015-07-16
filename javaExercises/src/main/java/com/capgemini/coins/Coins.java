@@ -25,7 +25,7 @@ public class Coins {
 		if (coins.size() < 2) {
 			return 0;
 		}
- 
+
 		/*
 		 * first, calculate the initial adjacency
 		 */
@@ -38,15 +38,17 @@ public class Coins {
 		}
 
 		/*
-		 * find the maximal possible adjacency by reversing each coin
-		 * and calculating the adjacency basing on the initial adjacency
+		 * find the maximal possible adjacency by reversing each coin and
+		 * calculating the adjacency basing on the initial adjacency
 		 */
 		int currentAdjacency = initialAdjacency, bestAdjacency = 0;
 
 		/*
-		 * for the first and last coin, reversing can give only one pair more or less
+		 * for the first and last coin, reversing can give only one pair more or
+		 * less
 		 */
-		if (coins.get(0) != coins.get(1) || coins.get(coins.size() - 1) != coins.get(coins.size() - 2)) {
+		if (coins.get(0) != coins.get(1)
+				|| coins.get(coins.size() - 1) != coins.get(coins.size() - 2)) {
 
 			bestAdjacency = currentAdjacency + 1;
 		} else {

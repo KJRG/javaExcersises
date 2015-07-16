@@ -18,29 +18,32 @@ import java.util.List;
 public class NodeValidators {
 	public void validateMethod(List<Node> nodes) throws NodeException {
 		for (Node n : nodes) {
-			
+
 			// validate id
 			if (n.getId().length() != 4) {
-				throw new InvalidNodeIdException("Node id has incorrect length");
+				throw new InvalidNodeIdException(
+						"Node id has incorrect length");
 			}
 
 			// validate description
 			if (n.getDescription().length() > 128) {
-				throw new InvalidNodeDescriptionException("Node description is too long");
+				throw new InvalidNodeDescriptionException(
+						"Node description is too long");
 			}
 		}
 
 		// validate cycle and subsequent nodes
 		try {
 			switch (hasCycleOrTooMuchSubsequent(nodes)) {
-			case 0:
-				break;
-			case 1:
-				throw new CycleDetectedException("A cycle was detected");
-			case 2:
-				throw new MultipleSubsequentNodesException("One of the nodes has too many subsequent nodes");
-			default:
-				break;
+				case 0 :
+					break;
+				case 1 :
+					throw new CycleDetectedException("A cycle was detected");
+				case 2 :
+					throw new MultipleSubsequentNodesException(
+							"One of the nodes has too many subsequent nodes");
+				default :
+					break;
 			}
 
 		} catch (NodeException ne) {
@@ -53,8 +56,8 @@ public class NodeValidators {
 		String current = "----", successor = null;
 
 		/*
-		 * check if there is any node with predecessorId = "----"
-		 * if not, there is a cycle in the graphs
+		 * check if there is any node with predecessorId = "----" if not, there
+		 * is a cycle in the graphs
 		 */
 		for (int i = 0; i < nodes.size(); i++) {
 			if (nodes.get(i).getPredecessorId() == current) {
