@@ -1,11 +1,11 @@
 package com.capgemini.pokerHands;
 
 public enum Rank {
-	
+
 	/*
 	 * each rank has a value (used to evaluate the hand of player)
 	 */
-	
+
 	HIGH_CARD(0),
 	ONE_PAIR(1),
 	TWO_PAIRS(2),
@@ -16,13 +16,13 @@ public enum Rank {
 	FOUR(7),
 	STRAIGHT_FLUSH(8),
 	ROYAL_FLUSH(9);
-	
+
 	private int rankValue;
-	
+
 	private Rank(final int rv) {
 		this.rankValue = rv;
 	}
-	
+
 	public int getValue() {
 		return rankValue;
 	}
