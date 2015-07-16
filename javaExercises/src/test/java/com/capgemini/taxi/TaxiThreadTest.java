@@ -24,7 +24,7 @@ public class TaxiThreadTest {
 		}
 		
 		try {
-			Thread.sleep(7000);
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
