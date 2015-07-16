@@ -17,13 +17,13 @@ public enum Rank {
 	STRAIGHT_FLUSH(8),
 	ROYAL_FLUSH(9);
 	
-	private int rv;
+	private int rankValue;
 	
 	private Rank(final int rv) {
-		this.rv = rv;
+		this.rankValue = rv;
 	}
 	
 	public int getValue() {
-		return rv;
+		return rankValue;
 	}
 }

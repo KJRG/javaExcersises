@@ -1,7 +1,16 @@
 package com.capgemini.pokerHands;
 
 public enum CardSuit {
-	SPADES('S'), CLUBS('C'), DIAMONDS('D'), HEARTS('H');
+	
+	/*
+	 * each card suit has a char (used to find the correct card when
+	 * reading from file)
+	 */
+	
+	SPADES('S'),
+	CLUBS('C'),
+	DIAMONDS('D'),
+	HEARTS('H');
 	
 	char suit;
 	
@@ -15,7 +24,7 @@ public enum CardSuit {
 	
 	public static CardSuit fromChar(final char s) {
 		for(CardSuit cs : CardSuit.values()) {
-			if(cs.suit == s) {
+			if(cs.suit == Character.toUpperCase(s)) {
 				return cs;
 			}
 		}
