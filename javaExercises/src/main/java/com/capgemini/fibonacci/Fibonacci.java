@@ -13,14 +13,12 @@ public class Fibonacci {
 			return 0;
 		}
 
-		long a = 0, // F(n)
-				b = 1; // F(n + 1)
+		long a = 0,
+				b = 1;
 
 		for (int i = 0; i < n; i++) {
-
-			// for next n (n = n + 1):
-			b += a; // calculate F(n + 1)
-			a = b - a; // calculate F(n)
+			b += a;
+			a = b - a;
 		}
 
 		return a;

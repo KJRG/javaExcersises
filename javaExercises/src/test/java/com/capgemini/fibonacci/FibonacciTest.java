@@ -41,4 +41,14 @@ public class FibonacciTest {
 		assertEquals(5, Fibonacci.fib(5));
 	}
 
+	@Test
+	public void shouldReturn55For10() {
+		assertEquals(55, Fibonacci.fib(10));
+	}
+
+	@Test
+	public void shouldReturn1597For17() {
+		assertEquals(1597, Fibonacci.fib(17));
+	}
+
 }
