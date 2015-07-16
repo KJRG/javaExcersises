@@ -1,12 +1,11 @@
 package com.capgemini.pokerHands;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.io.IOException;
 
 public class PokerHands {
 	public int PlayerOneWins(String filename) throws IOException {
@@ -48,7 +47,7 @@ public class PokerHands {
 				player2Cards.clear();
 			}
 
-		} catch (FileNotFoundException ex) {
+		} catch (IOException ex) {
 			throw ex;
 		} finally {
 			scanner.close();
