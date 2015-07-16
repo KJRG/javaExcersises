@@ -34,7 +34,7 @@ public class FindNearestTaxi implements Observer {
 
 	private void updateTaxiData(Taxi t) {
 		if (t.isFree() && clientPosition
-				.Distance(t.position) <= MAX_DISTANCE_TO_CLIENT) {
+				.distance(t.position) <= MAX_DISTANCE_TO_CLIENT) {
 			nearTaxis.add(t);
 			return;
 		}

@@ -142,7 +142,7 @@ public class Hand implements Comparable<Hand> {
 		return rank;
 	}
 
-	int HigherCard(TreeSet<CardOccurrenceCounter> sortedHistogramP1,
+	int higherCard(TreeSet<CardOccurrenceCounter> sortedHistogramP1,
 			TreeSet<CardOccurrenceCounter> sortedHistogramP2) {
 
 		List<CardOccurrenceCounter> hListP1 = new ArrayList<CardOccurrenceCounter>(
@@ -172,7 +172,7 @@ public class Hand implements Comparable<Hand> {
 				rankP2 = getHandRank(histogramP2, o.getCards());
 
 		return rankP1 == rankP2
-				? HigherCard(histogramP1, histogramP2)
+				? higherCard(histogramP1, histogramP2)
 				: (rankP1.getValue() - rankP2.getValue());
 	}
 }

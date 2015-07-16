@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.io.IOException;
 
 public class PokerHands {
-	public int PlayerOneWins(String filename) throws IOException {
+	public int playerOneWins(String filename) throws IOException {
 		int wins = 0;
 
 		List<Card> player1Cards = new ArrayList<Card>(),

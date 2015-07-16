@@ -13,7 +13,7 @@ public class PokerHandsTest {
 		int w = 0;
 
 		try {
-			w = ph.PlayerOneWins("src/main/resources/poker.txt");
+			w = ph.playerOneWins("src/main/resources/poker.txt");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
