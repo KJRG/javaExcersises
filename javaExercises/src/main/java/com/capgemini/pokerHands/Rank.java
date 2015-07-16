@@ -3,7 +3,7 @@ package com.capgemini.pokerHands;
 public enum Rank {
 	
 	/*
-	 * each rank has a value used to evaluate the hand of player
+	 * each rank has a value (used to evaluate the hand of player)
 	 */
 	
 	HIGH_CARD(0),

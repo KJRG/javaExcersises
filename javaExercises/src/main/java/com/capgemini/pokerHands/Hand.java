@@ -54,7 +54,6 @@ public class Hand implements Comparable<Hand> {
 		boolean isFlush = true;
 		CardSuit suit;
 
-		// Convert tree set to list
 		List<CardOccurrenceCounter> hList = new ArrayList<CardOccurrenceCounter> (sortedHistogram);
 		
 		// Evaluate the hand
@@ -62,7 +61,7 @@ public class Hand implements Comparable<Hand> {
 		case 1:
 
 			/*
-			 * Hand: (1, 1, 1, 1, 1)
+			 * Histogram: (1, 1, 1, 1, 1)
 			 * The histogram is sorted - to check if there is a straight,
 			 * it's enough to check the result of highest_card - lowest_card
 			 * - if it's 4, it's straight, otherwise it's high card
@@ -82,12 +81,12 @@ public class Hand implements Comparable<Hand> {
 
 			if (hList.get(1).getNumOfOccurrences() == 1) {
 
-				/* Hand: (2, 1, 1, 1) */
+				/* Histogram: (2, 1, 1, 1) */
 				rank = Rank.ONE_PAIR;
 				break;
 			}
 
-			/* Hand: (2, 2, 1) */
+			/* Histogram: (2, 2, 1) */
 			rank = Rank.TWO_PAIRS;
 			break;
 
@@ -95,18 +94,18 @@ public class Hand implements Comparable<Hand> {
 
 			if (hList.get(1).getNumOfOccurrences() == 1) {
 
-				/* Hand: (3, 1, 1) */
+				/* Histogram: (3, 1, 1) */
 				rank = Rank.THREE;
 				break;
 			}
 
-			/* Hand: (3, 2) */
+			/* Histogram: (3, 2) */
 			rank = Rank.FULL_HOUSE;
 			break;
 
 		case 4:
 
-			/* Hand: (4, 1) */
+			/* Histogram: (4, 1) */
 			rank = Rank.FOUR;
 			break;
 		}
@@ -142,7 +141,6 @@ public class Hand implements Comparable<Hand> {
 	int HigherCard(TreeSet<CardOccurrenceCounter> sortedHistogramP1,
 			TreeSet<CardOccurrenceCounter> sortedHistogramP2) {
 
-		// Convert tree sets to lists
 		List<CardOccurrenceCounter> hListP1 = new ArrayList<CardOccurrenceCounter> (sortedHistogramP1),
 									hListP2 = new ArrayList<CardOccurrenceCounter> (sortedHistogramP2);
 
@@ -158,11 +156,6 @@ public class Hand implements Comparable<Hand> {
 
 	public int compareTo(Hand o) {
 	
-		/*
-		 * create histograms for hands of both players
-		 * key is the value of card, value is the quantity
-		 * of this card in the hand of player
-		 */
 		TreeSet<CardOccurrenceCounter>	histogramP1 = createHistogram(this.getCards()),
 										histogramP2 = createHistogram(o.getCards());
 

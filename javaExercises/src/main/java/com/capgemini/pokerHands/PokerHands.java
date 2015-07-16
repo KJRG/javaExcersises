@@ -10,13 +10,11 @@ import java.util.Scanner;
 
 public class PokerHands {
 	public int PlayerOneWins(String filename) throws IOException {
-		int wins = 0; // number of wins for player 1
+		int wins = 0;
 
-		List<Card> player1Cards = new ArrayList<Card>(),	// hand of player 1
-				player2Cards = new ArrayList<Card>();		// hand of player 2
-		Path fullFilepath = Paths.get(filename);			// full path to file with data
+		List<Card> player1Cards = new ArrayList<Card>(), player2Cards = new ArrayList<Card>();
+		Path fullFilepath = Paths.get(filename);
 
-		// create scanner for reading file
 		Scanner scanner = null;
 		try {
 			scanner = new Scanner(fullFilepath);
@@ -39,18 +37,15 @@ public class PokerHands {
 					CardSuit suit = CardSuit.fromChar(card.charAt(1));
 					player2Cards.add(new Card(value, suit));
 				}
-				
-				Hand handPlayer1 = new Hand(player1Cards);
-				Hand handPlayer2 = new Hand(player2Cards);
+
+				Hand handPlayer1 = new Hand(player1Cards), handPlayer2 = new Hand(player2Cards);
 
 				if (handPlayer1.compareTo(handPlayer2) >= 0) {
 					wins++;
 				}
 
-				// Clear the lists of cards
 				player1Cards.clear();
 				player2Cards.clear();
-
 			}
 
 		} catch (FileNotFoundException ex) {
