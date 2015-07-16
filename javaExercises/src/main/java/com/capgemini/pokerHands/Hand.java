@@ -52,7 +52,7 @@ public class Hand implements Comparable<Hand> {
 
 		Rank rank = Rank.HIGH_CARD;
 		boolean isFlush = true;
-		char color;
+		CardSuit suit;
 
 		// Convert tree set to list
 		List<CardOccurrenceCounter> hList = new ArrayList<CardOccurrenceCounter> (sortedHistogram);
@@ -112,10 +112,10 @@ public class Hand implements Comparable<Hand> {
 		}
 
 		// Check if there's flush or not
-		color = hand.get(0).getSuit();
+		suit = hand.get(0).getSuit();
 
 		for (int i = 1; i < hand.size(); i++) {
-			if (hand.get(i).getSuit() != color) {
+			if (hand.get(i).getSuit() != suit) {
 				isFlush = false;
 				break;
 			}

@@ -2,9 +2,9 @@ package com.capgemini.pokerHands;
 
 public class Card {
 	private CardValue value;
-	private char suit;
+	private CardSuit suit;
 
-	public Card(CardValue cv, char s) {
+	public Card(CardValue cv, CardSuit s) {
 		this.value = cv;
 		this.suit = s;
 	}
@@ -13,7 +13,7 @@ public class Card {
 		return this.value;
 	}
 
-	public char getSuit() {
+	public CardSuit getSuit() {
 		return this.suit;
 	}
 }

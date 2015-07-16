@@ -28,14 +28,16 @@ public class PokerHands {
 				for (int j = 0; j < 5; j++) {
 					String card = scanner.next();
 					CardValue value = CardValue.fromChar(card.charAt(0));
-					player1Cards.add(new Card(value, card.charAt(1)));
+					CardSuit suit = CardSuit.fromChar(card.charAt(1));
+					player1Cards.add(new Card(value, suit));
 				}
 
 				// Read cards of player 2
 				for (int j = 0; j < 5; j++) {
 					String card = scanner.next();
 					CardValue value = CardValue.fromChar(card.charAt(0));
-					player2Cards.add(new Card(value, card.charAt(1)));
+					CardSuit suit = CardSuit.fromChar(card.charAt(1));
+					player2Cards.add(new Card(value, suit));
 				}
 				
 				Hand handPlayer1 = new Hand(player1Cards);

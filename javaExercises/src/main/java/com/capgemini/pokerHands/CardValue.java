@@ -3,7 +3,7 @@ package com.capgemini.pokerHands;
 public enum CardValue {
 	
 	/*
-	 * each card has a char (used to find the correct card when
+	 * each card value has a char (used to find the correct card when
 	 * reading from file) and a value used to evaluate the hand of player
 	 */
 
