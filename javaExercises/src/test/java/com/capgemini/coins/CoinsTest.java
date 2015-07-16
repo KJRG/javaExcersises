@@ -32,4 +32,10 @@ public class CoinsTest {
 		List<Integer> coinsList = Arrays.asList(1); // size = 1 (0)
 		assertEquals(0, Coins.solution(coinsList));
 	}
+
+	@Test
+	public void shouldReturn1For1_0() {
+		List<Integer> coinsList = Arrays.asList(1, 0); // size = 1 (0)
+		assertEquals(1, Coins.solution(coinsList));
+	}
 }

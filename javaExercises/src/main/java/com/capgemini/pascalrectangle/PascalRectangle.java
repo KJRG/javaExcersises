@@ -30,7 +30,7 @@ public class PascalRectangle {
 
 		// calculate (r - c)!
 		long rmcfactorial = 1;
-		for (int i = 1; i <= (r - c); i++) {
+		for (long i = 1; i <= (r - c); i++) {
 			rmcfactorial *= i;
 		}
 
